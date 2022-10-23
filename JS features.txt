@@ -1,0 +1,93 @@
+
+trim() :-removes the white space from the start and the end of the string
+To make comparison of string case insensitive using .toLowerCase/.toUpperCase on both of the strings
+
+**********************************************************************************************
+
+As is stated in the MDN Page for the element.style property:
+The style property is used to get as well as set the inline style of an element.
+Your element does not have a style attribute in which the background color is set-- as such, <yourelement>.style.backgroundColor returns an empty string. This is why getComputedStyle exists-- to allow you to interrogate the actual final/applied styles on an element, not merely those that might be inline on the element as a style attribute.
+
+**********************************************************************************************
+
+combination of objects and arrays is JSON
+
+**********************************************************************************************
+
+In Javascript we cannot update elements like this
+alarmsIdArray.forEach((elem) => {
+            console.log('setTimeout alarmsIdArray.forEach elements',elem);
+            if (elem==null) {
+                elem=time;
+            }
+        });
+We need to do this
+alarmsIdArray.forEach((elem,index,array) => {
+            console.log('setTimeout alarmsIdArray.forEach elements',elem);
+            if (elem==null) {
+                array[index]=time;
+            }
+        });
+For More:-https://stackoverflow.com/questions/46762112/why-is-my-foreach-loop-not-editing-my-array
+
+**********************************************************************************************
+SPECIAL CHARACTERS:-https://oinam.github.io/entities/
+**********************************************************************************************promise is an object representing eventual completion or failure of asynchronous operation
+**********************************************************************************************
+primitive data type
+1)MEMORY ALLOCATION IN STACK
+2)STRING,NUMBERS,BOOLEAN,NULL,UNDEFINED,SYMBOL
+REFERENCES DATA TYPE
+1)MEMORY ALLOCATION IN HEAP
+2)ARRAYS,OBJECT LITERALS,FUNCTIONS,DATES
+
+***********************************************************************************************
+document.geElementById may return null even if code is right because may be script loaded before html is loaded
+
+***********************************************************************************************
+NODES iN JAVASCRIPT:-https://stackoverflow.com/questions/24974621/what-is-a-node-in-javascript
+
+If you have an HTML file, you can see that it contains HTML elements, like <p>, <div>, <section>, etc. It also has HTML comments, line-breaks, text content, and HTML attributes. The browser reads this HTML file & according to the W3C HTML DOM standard, it breaks everything up in the HTML document into individual nodes.
+
+<p>, <div>, <section>, etc. are treated as "element" nodes, but comments are "comment" nodes, "text" objects are "text nodes" & line-breaks are also classified as "text nodes". With the help of Javascript, we can access these DOM nodes in the node tree.
+
+Always remember one thing: Every HTML element is a node, but not every node an HTML element.
+
+**********************************************************************************************
+Both interfaces are collections of DOM nodes. They differ in the methods they provide and in the type of nodes they can contain. While a NodeList can contain any node type, an HTMLCollection is supposed to only contain Element nodes.
+An HTMLCollection provides the same methods as a NodeList and additionally a method called namedItem.
+
+**********************************************************************************************
+HOW DOES OBJECT INHERITANCE SAVES MEMORY?
+
+**********************************************************************************************
+What is this?
+In JavaScript, the this keyword refers to an object.
+ It is primarily used to point to an instance of an object from its own method or constructor.
+
+Which object depends on how this is being invoked (used or called).
+
+The this keyword refers to different objects depending on how it is used:
+
+In an object method, this refers to the object.
+Alone, this refers to the global object.
+In a function, this refers to the global object.
+In a function, in strict mode, this is undefined.
+In an event, this refers to the element that received the event.
+Methods like call(), apply(), and bind() can refer this to any object.
+
+“this” Refers to a New Instance
+When a function is invoked with the new keyword, then the function is known as a constructor function and returns a new instance. In such cases, the value of this refers to a newly created instance.
+
+**********************************************************************************************
+
+In general, the new keyword performs the following tasks:
+
+1.It generates an empty object e.g. obj = { };
+2.It sets the invisible “prototype” property of the new object to be the constructor function’s accessible and visible “prototype”property.
+3.It bounds a property or function, which is declared with this keyword to the new object.
+4.It returns the newly generated object unless the constructor function returns a non-null object reference. In such a case, that object reference is returned.
+
+**********************************************************************************************
+eval() method evaluates a arithmetic string and returns a values for eg:-eval('2+5')
+**********************************************************************************************

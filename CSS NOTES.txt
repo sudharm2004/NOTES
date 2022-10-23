@@ -1,0 +1,7 @@
+INPUT BOX HAS SOME DEFAULT BORDER(1.6) AND PADDING(2).
+SO WHEN YOU MAKE INPUT'S WIDTH TO 100% IT GOES OUT OF PARENT DIV AS IT HAS EXTRA BORDER AND PADDING.
+NOW LET'S ASSUME PARENT WIDTH IS 500PX THEN INPUT WILL HAVE 500px if boxsizing is not boxborder but if it is boxborder then it will have 492.8
+
+***********************************************************************************************
+hover,focus and active
+https://bitsofco.de/when-do-the-hover-focus-and-active-pseudo-classes-apply/ 
