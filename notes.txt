@@ -42,3 +42,10 @@ let b=1;
     console.log(b)//prints 2 to the console
 }
 console.log(b)//prints 1 to the console
+
+closure:-function along with its lexical scope forms a closure
+Closure :Function bundled with its lexical environment is known as a closure. Whenever function is returned, even if its vanished in execution context but still it remembers the reference it was pointing to
+WHEN FUNCTIONS ARE RETURNED THEY STILL MAINTAIN THERE LEXICAL SCOPE,THEY REMEMBER WERE THEY WERE PRESENT
+
+Event Loop has only one job that is continously monitor call stack and callback queue and microtask queue
+callback functions from promises and mutation observer come in microtask queue
