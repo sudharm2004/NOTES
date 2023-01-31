@@ -9,7 +9,7 @@ Hosting and Call stack Demo -> https://youtu.be/Fnlnw8uY6jo
 Whenever javascript program is executed even with empty js file it js engine creates window object(with some methods and properties) and this keyword.So when you create a variable or function it is added to this window object.
 suppose you create a variable x and try to log it on console then you have to do like console.log(window.x) but if you do console.log(x) it will still log x to console cause if you does not provide any object(window object) then it will assume u are pointing to window object
 
-difference between undefined and undefined:-
+difference between undefined and not defined:-
 an variable is undefined if it was allocated placeholder or memory in variable environment and in code it was tried to access its value which is not yet intialised.
 an variable is not defined if it was not allocated placeholder or memory during variable environment and hence engine cannot find the the variable in the global space
 
