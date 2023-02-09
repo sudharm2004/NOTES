@@ -1,8 +1,18 @@
-everything in javascript happens inside an execution context   
+everything in javascript happens inside a global execution context   
 
-execution context is divided into two parts:-
-1)memory component/variable environment-> In this phase javascript engine go scan the code and only declare(allocate memory) variables with value=undefined and function with value=whole function
+Javascript is a synchronous and single threaded language.It means JS can execute only one command at a time
+
+execution context is divided into two parts/phases:-
+1)memory component/variable environment-> In this phase javascript engine go scan the code and only declare(allocate memory) variables with value=undefined and function with value=whole function.Data/Functions are stored in key value pairs.
 2)thread of execution-> In this whole code is executed line by line and variables are intialised value ,functions are called,etc.
+
+Function Invocation:-
+Whenever a new function in executed then brand new execution context is created and we again go through the two phases of execution context.
+In variable environment parameters and variables will declared with value equal to undefined and then next in thread of execution first of all parameters declared are intialised with value passed to function as argument and then similarly all other variables are initialised value if given and execute function in it.
+
+Call Stack:-
+In order handle creation,managment,deletion of execution context.
+Global execution context is always at the bottom of stack and other context are pushed into the stack and when they are executed they are popped off
 
 Hosting and Call stack Demo -> https://youtu.be/Fnlnw8uY6jo
 
