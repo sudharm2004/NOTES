@@ -15,6 +15,14 @@ In order handle creation,managment,deletion of execution context.
 Global execution context is always at the bottom of stack and other context are pushed into the stack and when they are executed they are popped off
 
 Hosting and Call stack Demo -> https://youtu.be/Fnlnw8uY6jo
+When we try to access and log variables and functions before even declaring them it does not throw error rather it logs undefined in the console.
+Now this happens because in variable environment phase all variables are declared with undefined and functions are declared with whole function.
+Now if we try to access a function created through arrow function and variable then it throws as it is treated as variable and undefined is stored in it and hence it throws that given variable is not a function.
+for eg:-
+ var getname=()=>{
+     console.log("hello world!");
+}
+Hoisting is a behavior in JavaScript where variables and function declarations are automatically moved to the top of their scope. In other words, regardless of where a variable or function is declared in the code, it is treated as if it was declared at the top of the code block.
 
 Whenever javascript program is executed even with empty js file it js engine creates window object(with some methods and properties) and this keyword.So when you create a variable or function it is added to this window object.
 suppose you create a variable x and try to log it on console then you have to do like console.log(window.x) but if you do console.log(x) it will still log x to console cause if you does not provide any object(window object) then it will assume u are pointing to window object
