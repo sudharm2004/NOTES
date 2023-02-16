@@ -5,3 +5,11 @@ NOW LET'S ASSUME PARENT WIDTH IS 500PX THEN INPUT WILL HAVE 500px if boxsizing i
 ***********************************************************************************************
 hover,focus and active
 https://bitsofco.de/when-do-the-hover-focus-and-active-pseudo-classes-apply/ 
+***********************************************************************************************
+flex-basis is used to specify the initial size of a flex item before any remaining space is distributed. It sets the default size of the item and determines how much space the item should take up along the main axis. It is expressed as a length or a percentage, and it can be set to auto to use the item's intrinsic width.
+
+flex-grow is used to specify how much a flex item should grow relative to the other items in the container when there is extra space available. It is a unitless value that specifies the proportion of the available space that the item should take up. For example, an item with a flex-grow value of 2 will take up twice as much space as an item with a flex-grow value of 1 when there is extra space available.
+
+flex-shrink is used to specify how much a flex item should shrink relative to the other items in the container when there is not enough space available. It is also a unitless value that specifies the proportion of the available space that the item should give up. For example, an item with a flex-shrink value of 2 will shrink twice as much as an item with a flex-shrink value of 1 when there is not enough space available.
+
+***********************************************************************************************
