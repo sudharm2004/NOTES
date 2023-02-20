@@ -67,3 +67,10 @@ WHEN FUNCTIONS ARE RETURNED THEY STILL MAINTAIN THERE LEXICAL SCOPE,THEY REMEMBE
 
 Event Loop has only one job that is continously monitor call stack and callback queue and microtask queue
 callback functions from promises and mutation observer come in microtask queue
+
+
+##Updating objects immutably in react
+Even though you updated the object A with the statement A={...A,work:'student'}, you are not actually modifying the original A object. Instead, you are creating a new object that is a copy of the original object A with the additional property work set to 'student'.
+This new object is a different object in memory, and the original object A is left untouched. This is the essence of immutability: you create a new object each time you update a state, rather than modifying the existing one. This helps avoid unintentional side effects that could arise if you modify an object directly.
+ the original object A is not removed from memory. When you do A = { ...A, work: 'student' }, a new object is created with the properties of the old A object along with a new property work having the value 'student'. The new object is then assigned to the variable A. The old object A still exists in memory until it is no longer referenced anywhere in the code and the garbage collector removes it.
+The important thing to note here is that the old object A has not been mutated. Instead, a new object has been created with the updated properties. This is what is meant by "updating objects immutably".
