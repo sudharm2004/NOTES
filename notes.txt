@@ -33,11 +33,14 @@ an variable is not defined if it was not allocated placeholder or memory during 
 
 lexical environment is created Whenever an execution context is created(variable environment) and lexical environment is local memory + reference to lexical environment of parent
 
-Hoisting is also done in let and const variable but we cannot access them before they are intialised
+Hoisting is also done in let and const variable but we cannot access them before they are intialised.
+We can see in the scope(in browser using debugger)...variable declared through var are present in global space but let and const are present something know as script(they are stored in separate memory space).
+let and const variables are not attached to global object(window )
 Temporal dead zone is the time between since when variable was hoisted till it was intialised
 
-Reference Error:-JS Engine tried to find a variable but was unable to find it
-Syntax Error:-This is error is show if the syntax is wrong for eg:- redeclaring same variabel twice
+Reference Error:-JS Engine tried to find a variable but was unable to find it.
+This error is thrown in the context of let and const variables.
+Syntax Error:-This is error is shown if the syntax is wrong for eg:- redeclaring same variable twice but when you declare same variable using var no error is thrown
 Type Error:-It is a error thrown for particular type(data type) for eg:- you try to re-intialise the variable intialised with const
 
 Block:-lines of code within a curly braces represent a Block.They are used to represent a multiple lines of code as single line where js engine expects a single statement
