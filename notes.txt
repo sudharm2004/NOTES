@@ -127,3 +127,14 @@ In this example, the getData() function is declared as async, which allows us to
 When you use await with a Promise, it suspends the execution of the current function until the Promise resolves, and then it returns the resolved value.
 
 In the case of fetch, it returns a Promise that resolves with a Response object. To access the response data, you need to call the json() method on the Response object, which also returns a Promise. When you use await with the json() Promise, it suspends the execution of the function until the Promise resolves with the parsed data, and then it returns the data.
+
+##prototypal inheritance
+Prototypal inheritance is a way that objects in JavaScript can inherit properties and methods from a parent object, known as the prototype. In this model, each object has a prototype object that it inherits properties and methods from, and can in turn be used as the prototype for other objects.
+
+When a property or method is accessed on an object, if the object itself doesn't have that property or method, JavaScript will look for it on the object's prototype. If it's not found there, the prototype's prototype is searched, and so on, all the way up to the root prototype object.
+
+ When you create an object with a prototype, the prototype object is created only once and all the created objects refer to the same prototype object. This helps to save memory as multiple objects can share the same prototype instead of each having its own copy of the same properties and methods.
+
+For example, in JavaScript, the Object constructor function is used to create objects. When you create an object using the new Object() syntax, the object will have a prototype object. The prototype object for the Object constructor is stored in Object.prototype.
+
+So, if you create five objects using new Object() syntax and set their prototype to Object.prototype, then all five objects will share the same prototype object, which is Object.prototype. This helps to save memory as only one copy of Object.prototype is created and all five objects refer to the same prototype object.
