@@ -74,3 +74,53 @@ Even though you updated the object A with the statement A={...A,work:'student'},
 This new object is a different object in memory, and the original object A is left untouched. This is the essence of immutability: you create a new object each time you update a state, rather than modifying the existing one. This helps avoid unintentional side effects that could arise if you modify an object directly.
  the original object A is not removed from memory. When you do A = { ...A, work: 'student' }, a new object is created with the properties of the old A object along with a new property work having the value 'student'. The new object is then assigned to the variable A. The old object A still exists in memory until it is no longer referenced anywhere in the code and the garbage collector removes it.
 The important thing to note here is that the old object A has not been mutated. Instead, a new object has been created with the updated properties. This is what is meant by "updating objects immutably".
+
+##async and await in javascript
+In JavaScript, await is used to wait for a promise to resolve before continuing execution of the current function. When a function contains the await keyword before a promise, the function will pause until the promise is resolved, and then continue execution.
+
+Here's an example:
+async function getData() {
+  const response = await fetch('/data'); // Wait for the response from the server
+  const data = await response.json(); // Wait for the data to be parsed as JSON
+  return data;
+}
+
+getData().then((data) => {
+  console.log(data);
+});
+In this example, the getData() function is an asynchronous function that uses await to wait for the response from the server and then parse the data as JSON. Once the data is available, the function returns the data. The then() method is then used to log the data to the console.
+
+Note that await can only be used inside an async function. Also, if the promise that await is waiting for is rejected, the async function will throw an error that can be caught using a try/catch block.
+
+You can execute a function that processes the data returned by the fetch promise by chaining the .then() method onto the end of the fetch call.
+
+Here's an example:
+fetch('https://api.example.com/data')
+  .then(response => response.json())
+  .then(data => {
+    // Do something with the data
+    console.log(data);
+  })
+  .catch(error => {
+    // Handle any errors
+    console.error(error);
+  });
+In this example, the fetch call returns a promise that resolves with a Response object. We chain the .then() method onto the end of the fetch call to extract the JSON data from the response using the json() method. The resulting promise resolves with the parsed data, which we then pass to a function that does something with it. If there is an error, we catch it with the .catch() method.
+
+Using await, the code would look like this:
+async function getData() {
+  const response = await fetch('https://api.example.com/data');
+  const data = await response.json();
+  // Do something with the data
+  console.log(data);
+}
+
+getData().catch(error => {
+  // Handle any errors
+  console.error(error);
+});
+In this example, the getData() function is declared as async, which allows us to use await to wait for the response and the data. Once the data is available, we log it to the console. If there is an error, we catch it with a try/catch block.
+
+When you use await with a Promise, it suspends the execution of the current function until the Promise resolves, and then it returns the resolved value.
+
+In the case of fetch, it returns a Promise that resolves with a Response object. To access the response data, you need to call the json() method on the Response object, which also returns a Promise. When you use await with the json() Promise, it suspends the execution of the function until the Promise resolves with the parsed data, and then it returns the data.
