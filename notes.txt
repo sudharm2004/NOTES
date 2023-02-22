@@ -43,7 +43,7 @@ This error is thrown in the context of let and const variables.
 Syntax Error:-This is error is shown if the syntax is wrong for eg:- redeclaring same variable twice but when you declare same variable using var no error is thrown
 Type Error:-It is a error thrown for particular type(data type) for eg:- you try to re-intialise the variable intialised with const
 
-Block:-lines of code within a curly braces represent a Block.They are used to represent a multiple lines of code as single line where js engine expects a single statement
+Block:-lines of code within a curly braces represent a Block.They are used to represent a multiple lines of code as single line where js engine expects a single statement.Block is used to group the the multiple js statements.
 for eg:- a if statement expects single statement after the condition
 that is following code is absolute fine
 if(true)console.log('single line') 
@@ -53,7 +53,22 @@ if(true){
     console.log('second line');
 } 
 
-Block Scope:- what all variable and functions that can be accessed within the block
+Block Scope:- what all variable and functions that can be accessed within the block.
+Let & const are block scoped while var is not block scoped that is you cannot access let & const variable created in block outside of the block while you can access var variable outside of the block.
+for eg:-
+{
+  let a=1;
+  const b=2;
+  var c=3;
+  console.log(a);//print 1
+  console.log(b);//print 2
+  console.log(c);//print 3
+ }
+  console.log(a);//print1
+  console.log(b);//throws error
+  console.log(c);
+ 
+Now this happens because if you see in the scope using debugger var variable are attached to global scope while for let & const variable a new scope Block is created.
 
 Shadowing:-If we have same named variable outside a particular block then variable inside the block shadows the variable outside the block
 for eg:-
