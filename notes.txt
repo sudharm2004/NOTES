@@ -85,6 +85,14 @@ WHEN FUNCTIONS ARE RETURNED THEY STILL MAINTAIN THERE LEXICAL SCOPE,THEY REMEMBE
 
 Event Loop has only one job that is continously monitor call stack and callback queue and microtask queue
 callback functions from promises and mutation observer come in microtask queue
+Whenever a js code is executed a global execution context is created and pushed into call stack and whenever a new function is encountered new execution context of that function is created and pushed into call stack and the code is executed 
+
+Now if we have settimeout then callback function to settimeout is registered and after the time expires it is pushed into call back queue and now the event loop always keep track of callback queue and if there was something in queue it will push it Into callstack  and hence callback function executed after time expires 
+
+The only job of event loop is to monitor callstack and callback queue and if callstack is empty and there is something in callback queue then push it into callstack 
+
+Microtask queue has priority than callback queue which means functions in the Microtask queue are executed first
+Callback function from promises and mutations server are pushed into microtask queue
 
 
 ##Updating objects immutably in react
