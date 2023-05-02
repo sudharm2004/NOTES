@@ -14,6 +14,10 @@ Call Stack:-
 In order handle creation,managment,deletion of execution context.
 Global execution context is always at the bottom of stack and other context are pushed into the stack and when they are executed they are popped off
 
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 Hosting and Call stack Demo -> https://youtu.be/Fnlnw8uY6jo
 When we try to access and log variables and functions before even declaring them it does not throw error rather it logs undefined in the console.
 Now this happens because in variable environment phase all variables are declared with undefined and functions are declared with whole function.
@@ -31,6 +35,10 @@ difference between undefined and not defined:-
 an variable is undefined if it was allocated placeholder or memory in variable environment and in code it was tried to access its value which is not yet intialised.
 an variable is not defined if it was not allocated placeholder or memory during variable environment and hence engine cannot find the the variable in the global space
 
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 lexical environment is created Whenever an execution context is created(variable environment) and lexical environment is local memory + reference to lexical environment of parent
 
 Hoisting is also done in let and const variable but we cannot access them before they are intialised.
@@ -42,6 +50,10 @@ Reference Error:-JS Engine tried to find a variable but was unable to find it.
 This error is thrown in the context of let and const variables.
 Syntax Error:-This is error is shown if the syntax is wrong for eg:- redeclaring same variable twice but when you declare same variable using var no error is thrown
 Type Error:-It is a error thrown for particular type(data type) for eg:- you try to re-intialise the variable intialised with const
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 Block:-lines of code within a curly braces represent a Block.They are used to represent a multiple lines of code as single line where js engine expects a single statement.Block is used to group the the multiple js statements.
 for eg:- a if statement expects single statement after the condition
@@ -79,12 +91,31 @@ let b=1;
 }
 console.log(b)//prints 1 to the console
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 closure:-function along with its lexical scope forms a closure
 Closure :Function bundled with its lexical environment is known as a closure. Whenever function is returned, even if its vanished in execution context but still it remembers the reference it was pointing to
 WHEN FUNCTIONS ARE RETURNED THEY STILL MAINTAIN THERE LEXICAL SCOPE,THEY REMEMBER WERE THEY WERE PRESENT
 
+
+so in closure does the variable present in lexical environment of function are stored in separate memory space so when the function is called it refers it from this memory space?
+Yes, that's correct. When a function is defined, it creates a closure which stores references to all the variables in the function's lexical environment. This closure has its own memory space, separate from the global memory space, where it stores these variables.
+
+When the function is executed, any references to variables in its lexical environment are resolved by looking them up in the closure's memory space, rather than the global memory space. This means that even if the variables in the lexical environment are no longer in scope or have been reassigned, the closure still has a reference to their original values.
+
+so the function that forms the closure updates the variable in closure and hence we get updated value
+Yes, that's correct. When a function is created inside another function, it has access to the variables of the outer function. The inner function forms a closure that contains a reference to the variables in the outer function's scope. When the inner function is called, it has access to the variables in the closure, and can read and update their values. Any changes made to the variables inside the closure will persist even after the outer function has returned. This is why closures are often used for creating private variables in JavaScript
+
+so when a closure is formed variable created in lexical environment are not destoyed and stored in closures right?
+
+Yes, that's correct. When a closure is formed, the variables created in the lexical environment are not destroyed and are stored in the closure. The closure keeps a reference to the variables in the lexical environment, which allows them to be accessed and updated by the function even after the lexical environment is no longer in scope. This is why closures are useful for creating private variables and maintaining state in JavaScript functions.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 Event Loop has only one job that is continously monitor call stack and callback queue and microtask queue
 callback functions from promises and mutation observer come in microtask queue
+
 Whenever a js code is executed a global execution context is created and pushed into call stack and whenever a new function is encountered new execution context of that function is created and pushed into call stack and the code is executed 
 
 Now if we have settimeout then callback function to settimeout is registered and after the time expires it is pushed into call back queue and now the event loop always keep track of callback queue and if there was something in queue it will push it Into callstack  and hence callback function executed after time expires 
@@ -94,12 +125,69 @@ The only job of event loop is to monitor callstack and callback queue and if cal
 Microtask queue has priority than callback queue which means functions in the Microtask queue are executed first
 Callback function from promises and mutations server are pushed into microtask queue
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Scope means where you can access the a specific variable in our code.
+There are two ways of seeing a scope:-
+1)What is scope of variable?
+It means where you can access the given variable.
+2)is a variable in a scope?
+
+lexical environment of scope/function is combination of its local memory space and reference to parent's lexical environment.
+A lexical environment is created when a function is defined or when a block of code is executed. It includes the variables and functions defined within that environment, as well as any variables and functions that are accessible from the parent environment.
+lexical environment of global scope is comibination of current global memory space and reference to null.
+
+A scope chain is a list of nested scopes (environment records) that are searched for the value of a variable or function. The chain starts from the innermost scope, which is the local scope, and goes outward to the global scope.
+
+When a variable is accessed, the JavaScript interpreter searches for it in the current scope. If it's not found, it continues searching in the parent scope, and so on, until it reaches the global scope. The scope chain is created when a function is defined, and it determines the visibility of variables and functions within that function. The scope chain is used to resolve variable and function references, and it allows nested functions to access variables and functions in their parent scopes.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Function statements and function expressions are both ways to define functions in JavaScript.
+
+A function statement is a way to define a function using the function keyword followed by the function name and the function body. For example:
+
+function sayHello() {
+console.log("Hello!");
+}
+A function expression is a way to define a function using the function keyword without a function name. Instead, the function is assigned to a variable or passed as an argument to another function. For example:
+
+const sayHello = function() {
+console.log("Hello!");
+}
+First-class functions, on the other hand, refer to the ability of functions to be treated as values and passed around like any other data type in JavaScript. This means that functions can be assigned to variables, passed as arguments to other functions, and returned from functions. For example:
+
+const add = function(a, b) {
+return a + b;
+}
+
+const subtract = function(a, b) {
+return a - b;
+}
+
+function calculate(operation, a, b) {
+return operation(a, b);
+}
+
+console.log(calculate(add, 2, 3)); // Output: 5
+console.log(calculate(subtract, 5, 3)); // Output: 2
+In the above example, add and subtract are both first-class functions that can be passed as arguments to the calculate function, which also demonstrates the use of function expressions.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
 
 ##Updating objects immutably in react
 Even though you updated the object A with the statement A={...A,work:'student'}, you are not actually modifying the original A object. Instead, you are creating a new object that is a copy of the original object A with the additional property work set to 'student'.
 This new object is a different object in memory, and the original object A is left untouched. This is the essence of immutability: you create a new object each time you update a state, rather than modifying the existing one. This helps avoid unintentional side effects that could arise if you modify an object directly.
  the original object A is not removed from memory. When you do A = { ...A, work: 'student' }, a new object is created with the properties of the old A object along with a new property work having the value 'student'. The new object is then assigned to the variable A. The old object A still exists in memory until it is no longer referenced anywhere in the code and the garbage collector removes it.
 The important thing to note here is that the old object A has not been mutated. Instead, a new object has been created with the updated properties. This is what is meant by "updating objects immutably".
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 ##async and await in javascript
 In JavaScript, await is used to wait for a promise to resolve before continuing execution of the current function. When a function contains the await keyword before a promise, the function will pause until the promise is resolved, and then continue execution.
@@ -150,6 +238,10 @@ In this example, the getData() function is declared as async, which allows us to
 When you use await with a Promise, it suspends the execution of the current function until the Promise resolves, and then it returns the resolved value.
 
 In the case of fetch, it returns a Promise that resolves with a Response object. To access the response data, you need to call the json() method on the Response object, which also returns a Promise. When you use await with the json() Promise, it suspends the execution of the function until the Promise resolves with the parsed data, and then it returns the data.
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 ##prototypal inheritance
 Prototypal inheritance is a way that objects in JavaScript can inherit properties and methods from a parent object, known as the prototype. In this model, each object has a prototype object that it inherits properties and methods from, and can in turn be used as the prototype for other objects.
