@@ -288,3 +288,32 @@ When a property or method is accessed on an object, if the object itself doesn't
 For example, in JavaScript, the Object constructor function is used to create objects. When you create an object using the new Object() syntax, the object will have a prototype object. The prototype object for the Object constructor is stored in Object.prototype.
 
 So, if you create five objects using new Object() syntax and set their prototype to Object.prototype, then all five objects will share the same prototype object, which is Object.prototype. This helps to save memory as only one copy of Object.prototype is created and all five objects refer to the same prototype object.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+##Comparison in javascript
+
+
+In JavaScript, the == operator is used for comparison between two values. When using the == operator, JavaScript performs type coercion to convert the operands to a common type before making the comparison.
+
+Type coercion is the process of converting a value from one data type to another. JavaScript has a set of rules for type coercion when comparing values with the == operator. Here's how it works:
+
+If the operands have the same type, JavaScript performs a strict equality comparison (===) and returns true if they have the same value and type.
+
+If the operands have different types, JavaScript attempts to convert them to a common type before making the comparison. The rules for type coercion are as follows:
+
+a. If one operand is a string and the other operand is a number, JavaScript converts the string to a number and then performs a numeric comparison.
+
+b. If one operand is a boolean and the other operand is not a boolean, JavaScript converts the boolean to a number (true becomes 1, false becomes 0) and then performs a numeric comparison.
+
+c. If one operand is an object and the other operand is a primitive type, JavaScript attempts to convert the object to a primitive value using the valueOf() or toString() methods of the object.
+
+d. If both operands are objects, JavaScript performs a reference comparison and returns true only if the operands refer to the same object.
+
+e. If both operands are null or undefined, JavaScript considers them equal and returns true.
+
+f. If one operand is NaN (Not-a-Number) and the other operand is not a number, the comparison returns false.
+
+g. For all other cases, JavaScript considers the operands unequal and returns false.
+
+It's important to note that the == operator can sometimes lead to unexpected or counterintuitive results due to the complex rules of type coercion. To avoid this, it's generally recommended to use the strict equality operator (===), which compares both value and type without performing any type coercion.
