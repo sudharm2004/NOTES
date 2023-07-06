@@ -1,3 +1,4 @@
+
 everything in javascript happens inside a global execution context   
 
 Javascript is a synchronous and single threaded language.It means JS can execute only one command at a time
@@ -189,10 +190,85 @@ The important thing to note here is that the old object A has not been mutated. 
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+In JavaScript, a Promise is an object that represents the eventual completion (or failure) of an asynchronous operation and its resulting value. It provides a way to handle asynchronous operations in a more structured and manageable manner.
+
+A Promise can be in one of three states:
+
+Pending: The initial state when the asynchronous operation is still in progress and the promise is neither fulfilled nor rejected.
+Fulfilled: The state when the asynchronous operation is successfully completed, and the promise is resolved with a value.
+Rejected: The state when an error or exception occurs during the asynchronous operation, and the promise is rejected with a reason or error message.
+Promise Chaining:
+Promise chaining allows you to perform multiple asynchronous operations in a sequential manner by chaining multiple promises together. It helps avoid the "callback hell" problem and makes the code more readable and maintainable.
+
+To chain promises, you use the then() method on a resolved promise to handle the successful fulfillment of the promise, and the catch() method to handle any errors or rejections. The then() and catch() methods return new promises, allowing you to chain them together.
+
+Here's an example that demonstrates promise chaining:
+
+javascript
+Copy code
+function fetchUser(id) {
+  return new Promise((resolve, reject) => {
+    // Simulating an asynchronous operation
+    setTimeout(() => {
+      const users = [
+        { id: 1, name: 'John' },
+        { id: 2, name: 'Jane' },
+        { id: 3, name: 'Alice' }
+      ];
+      
+      const user = users.find(user => user.id === id);
+      
+      if (user) {
+        resolve(user);
+      } else {
+        reject('User not found');
+      }
+    }, 2000);
+  });
+}
+
+function fetchPosts(userId) {
+  return new Promise((resolve, reject) => {
+    // Simulating an asynchronous operation
+    setTimeout(() => {
+      const posts = [
+        { id: 1, userId: 1, title: 'Post 1' },
+        { id: 2, userId: 1, title: 'Post 2' },
+        { id: 3, userId: 2, title: 'Post 3' },
+        { id: 4, userId: 3, title: 'Post 4' }
+      ];
+      
+      const userPosts = posts.filter(post => post.userId === userId);
+      
+      if (userPosts.length > 0) {
+        resolve(userPosts);
+      } else {
+        reject('No posts found');
+      }
+    }, 2000);
+  });
+}
+
+fetchUser(2)
+  .then(user => {
+    console.log(`User: ${user.name}`);
+    return fetchPosts(user.id);
+  })
+  .then(posts => {
+    console.log('Posts:');
+    posts.forEach(post => {
+      console.log(`- ${post.title}`);
+    });
+  })
+  .catch(error => {
+    console.log(`Error: ${error}`);
+  });
+In the example above, the fetchUser function returns a promise that resolves with a user object if found, or rejects with an error message if not found. The fetchPosts function returns a promise that resolves with an array of user posts if found, or rejects with an error message if not found.
+
+We chain the promises by calling then() on the resolved promise returned by fetchUser. Inside the then() callback, we log the user name and return a new promise returned by fetchPosts to chain it. Finally, we use another then() to handle the resolved promise of fetchPosts and log the posts. If any promise in the chain is rejected, we use catch() to handle
 
 
-
-
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
 here is an example of using fetch with .then and await:
 
 Using .then:
