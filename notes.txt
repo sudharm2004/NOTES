@@ -390,6 +390,26 @@ e. If both operands are null or undefined, JavaScript considers them equal and r
 
 f. If one operand is NaN (Not-a-Number) and the other operand is not a number, the comparison returns false.
 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Currying is a technique in JavaScript where a function with multiple arguments is transformed into a sequence of functions, each taking a single argument. The curried function allows you to pass arguments one at a time, returning a new function with each partial application until all the arguments are provided. It enables more flexible and reusable function composition.
+
+Let's understand currying with an example:
+
+javascript
+Copy code
+function add(a) {
+  return function(b) {
+    return a + b;
+  }
+}
+
+// Curried function
+const addCurried = add(5);
+
+console.log(addCurried(3)); // Output: 8
+In this example, we have a function add that takes an argument a. Inside add, we define and return an inner function that takes another argument b. The inner function, when called, returns the sum of a and b.
+
 g. For all other cases, JavaScript considers the operands unequal and returns false.
 
 It's important to note that the == operator can sometimes lead to unexpected or counterintuitive results due to the complex rules of type coercion. To avoid this, it's generally recommended to use the strict equality operator (===), which compares both value and type without performing any type coercion.
